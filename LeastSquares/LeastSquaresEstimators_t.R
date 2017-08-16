@@ -1,6 +1,6 @@
 library(MASS) # for multivarite normal
 
-leastsquares_test <- function(stepsize = 0.01,max_iter = 100)
+leastsquares_test <- function(stepsize = 1,scale_step = 0.8,scale_total = 0.5,iter_max = 100)
 {
   n <- 10
   p <- 3
@@ -14,14 +14,30 @@ leastsquares_test <- function(stepsize = 0.01,max_iter = 100)
   coeff_lm <- lmfit$coefficients
   print("Coefficients from lm package:")
   print(coeff_lm)
+  fvalue_lm <- norm(y-X%*%coeff_lm,"2")
+  print("Function value from lm package:")
+  print(fvalue_lm)
   
   coeff_math <- solve(t(X)%*%X)%*%t(X)%*%y
   print("Coefficients from direct computation:")
   print(coeff_math)
+  fvalue_math <- norm(y-X%*%coeff_math,"2")
+  print("Function value from direct computation:")
+  print(fvalue_math)
   
-  coeff_gd <- leastsquares_gd(y,X,stepsize = stepsize)
+  coeff_gd <- leastsquares_gd(y,X,stepsize = 0.01)
   print("Coefficients from gradient descent function:")
   print(coeff_gd)
+  fvalue_gd <- norm(y-X%*%coeff_gd,"2")
+  print("Function value from gradient descent:")
+  print(fvalue_gd)
+  
+  coeff_gd_bt <- leastsquares_gd_bt(y,X)
+  print("Coefficients from gradient descent function with backtracking:")
+  print(coeff_gd_bt)
+  fvalue_gd_bt <- norm(y-X%*%coeff_gd_bt,"2")
+  print("Function value from gradient descent function with backtracking:")
+  print(fvalue_gd_bt)
   
   return(1)
 }
