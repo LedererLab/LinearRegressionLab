@@ -11,3 +11,9 @@
 2. Write a function leastsquares_gd_bt that complements leastsquares_gd with a backtracking rule.
 3. Write a function leastsquares_cd that computes the least-squares estimator via coordinate descent. Compare all methods in terms of accuracy and speed.
 4. Create a fuction leastsquares_cd_pr that computes the least-squares estimator via coordinate descent and pre-computes as many quantities as possible. 
+
+## Licensing
+Contact author for licensing options
+
+## Author
+- **Johannes Lederer** - *Assistant Professor, University of Washington* 
