@@ -39,5 +39,13 @@ leastsquares_test <- function(stepsize = 1,scale_step = 0.8,scale_total = 0.5,it
   print("Function value from gradient descent function with backtracking:")
   print(fvalue_gd_bt)
   
+  coeff_cd <- leastsquares_cd(y,X,stepsize = 0.01)
+  print("Coefficients from coodinate descent function:")
+  print(coeff_cd)
+  fvalue_cd <- norm(y-X%*%coeff_cd,"2")
+  print("Function value from coordinate descent function:")
+  print(fvalue_cd)
+  
+  
   return(1)
 }
