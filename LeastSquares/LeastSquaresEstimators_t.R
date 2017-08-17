@@ -46,6 +46,13 @@ leastsquares_test <- function(stepsize = 1,scale_step = 0.8,scale_total = 0.5,it
   print("Function value from coordinate descent function:")
   print(fvalue_cd)
   
+  coeff_cd_pr <- leastsquares_cd_pr(y,X,stepsize = 0.01)
+  print("Coefficients from coodinate descent function with pre-computations:")
+  print(coeff_cd_pr)
+  fvalue_cd_pr <- norm(y-X%*%coeff_cd_pr,"2")
+  print("Function value from coordinate descent function with pre-computations:")
+  print(fvalue_cd_pr)
+  
   
   return(1)
 }

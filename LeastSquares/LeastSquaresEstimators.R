@@ -53,4 +53,22 @@ leastsquares_cd <- function(y,X,stepsize = 0.01,iter_max = 100)
   return(beta)  
 }
 
+leastsquares_cd_pr <- function(y,X,stepsize = 0.01,iter_max = 100) 
+{
+  beta <- rep(0,dim(X)[2])
+  a <- 2*stepsize*t(X)%*%y
+  B <- 2*stepsize*t(X)%*%X
+  while (iter_max > 0)
+  {
+    j <- 1
+    while (j <= dim(X)[2])
+    {  
+      beta[j] <- beta[j] + (a-B%*%beta)[j]
+      j <- j + 1
+    }
+    iter_max <- iter_max - 1
+  }
+  return(beta)  
+}
+
 
